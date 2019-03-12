@@ -24,7 +24,8 @@ var app = express();
 
 var originsWhitelist = [
     'http://localhost:4200',
-    '*'
+    '*',
+    'http://ec2-54-175-125-60.compute-1.amazonaws.com:4000'
 ];
 
 var corsOptions = {
