@@ -23,7 +23,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var app = express();
 
 var originsWhitelist = [
-    'http://localhost:4200'
+    'http://localhost:4200',
+    '*'
 ];
 
 var corsOptions = {
@@ -36,16 +37,17 @@ var corsOptions = {
 
 //Cors options
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', "http://localhost:4200");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'GET,HEAD,POST,PUT,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Credentials', 'true')
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-WithContent-Type');
     next();
 }
 
-// app.use(allowCrossDomain);
+app.use(allowCrossDomain);
 
 
 
