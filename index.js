@@ -24,8 +24,7 @@ var app = express();
 
 var originsWhitelist = [
     'http://localhost:4200',
-    '*',
-    'http://ec2-54-175-125-60.compute-1.amazonaws.com:4000'
+    '*'
 ];
 
 var corsOptions = {
@@ -53,7 +52,7 @@ app.use(allowCrossDomain);
 
 
 const userinfo = require('./routes/user.route');
-const fileuploadInfo =  require('./routes/file.routes');
+const fileuploadInfo =  require('./routes/file.route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
