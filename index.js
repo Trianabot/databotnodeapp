@@ -23,7 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var app = express();
 
 var originsWhitelist = [
-    'http://localhost:4200'
+    'http://www.dev.databotics.io'
 ];
 
 var corsOptions = {
